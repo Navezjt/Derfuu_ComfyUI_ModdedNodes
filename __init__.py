@@ -15,53 +15,50 @@ import custom_nodes.Derfuu_ComfyUI_ModdedNodes.Nodes.Modded.Latents as LatentNod
 import custom_nodes.Derfuu_ComfyUI_ModdedNodes.Nodes.Modded.Condotionig as CondNodes
 
 NODE_CLASS_MAPPINGS = {
-    "FloatNode_DF": TypeNodes.FloatNode,
-    "IntegerNode_DF": TypeNodes.IntegerNode,
-    "StringNode_DF": TypeNodes.StringNode,
-    "TupleNode_DF": TypeNodes.TupleNode,
-    # "MultilineStringNode_DF": TypeNodes.MultilineStringNode,
+    "Float": TypeNodes.FloatNode,                               # Return float Value
+    "Integer": TypeNodes.IntegerNode,                           # Return int Value
+    "Text": TypeNodes.StringNode,                               # IDK where to use this... yet
+    "Text box": TypeNodes.MultilineStringNode,                  # This too
 
-    "FloatDebugPrint_DF": DebugNodes.DebugNodeFloat,
-    "IntDebugPrint_DF": DebugNodes.DebugNodeInt,
-    "TupleDebugPrint_DF": DebugNodes.DebugNodeTuple,
-    "StringDebugPrint_DF": DebugNodes.DebugNodeString,
+    # NOTE: if input values are not changed, they don't print in console, same to random
+    "Float debug print": DebugNodes.DebugNodeFloat,
+    "Int debug print": DebugNodes.DebugNodeInt,
+    "Tuple debug print": DebugNodes.DebugNodeTuple,
+    "String debug print": DebugNodes.DebugNodeString,
 
-    # "RandomFloat_DF": RandNodes.RandomValue,
-    #
-    # "Float2Tuple_DF": TupleNodes.Float2Tuple,
-    # "FlipTuple_DF": TupleNodes.FlipTuple,
-    # "Tuple2Float_DF": TupleNodes.Tuple2Float,
-    # "Tuple2Int_DF": TupleNodes.Tuple2Int,
-    #
-    # "Modd2Orig": ConvNodes.Modd2Orig,
-    # "Orig2Modd": ConvNodes.Orig2Modd,
-    # "Int2Float_DF": ConvNodes.Int2Float,
-    # "CeilNode_DF": ConvNodes.CeilNode,
-    # "FloorNode_DF": ConvNodes.FloorNode,
-    # "ABSNode_DF": ConvNodes.ABSNode,
-    #
-    # "GetLatentSize_DF": GetSizes.GetLatentSize,
-    # "GetImageSize_DF": GetSizes.GetImageSize,
-    #
-    "SumNode_DF": SMath.SumNode,
-    "SubtractNode_DF": SMath.SubtractNode,
-    "MultiplyNode_DF": SMath.MultiplyNode,
-    "DivideNode_DF": SMath.DivideNode,
-    "PowNode_DF": SMath.PowNode,
-    "SqrtNode_DF": SMath.SquareRootNode,
-    #
-    # "SinNode_DF": TMath.SinNode,
-    # "CosNode_DF": TMath.CosNode,
-    # "TanNode_DF": TMath.tgNode,
-    #
-    # # "EmptyLatentImage_DF": LatentNodes.EmptyLatentImage,
-    # "LatentScale_Ratio_DF": LatentNodes.LatentScale_Ratio,
-    # "LatentScale_Side_DF": LatentNodes.LatentScale_Side,
-    # # "LatentComposite_DF": LatentNodes.LatentComposite,
-    #
-    # "ImageScale_Ratio_DF": ImageNodes.ImageScale_Ratio,
-    # "ImageScale_Side_DF": ImageNodes.ImageScale_Side,
-    #
-    # "ConditioningSetArea_DF": CondNodes.ConditioningSetArea_MOD,
-    # # "ConditioningSetAreaEXT_DF": CondNodes.ConditioningSetAreaExt_MOD,
+    "Random": RandNodes.RandomValue,                            # Return random value in range
+
+    "Tuple": TupleNodes.Tuple,                                  # Takes floats into Tuple
+    "Int to tuple": TupleNodes.Int2Tuple,                       # Takes ints into Tuple
+    "Tuple to floats": TupleNodes.Tuple2Float,                  # Return 2 floats from Tuple
+    "Tuple to ints": TupleNodes.Tuple2Int,                      # Return 2 ints from Tuple
+    "Tuple swap": TupleNodes.FlipTuple,                         # Swap Values in tuple
+
+    "Int to float": ConvNodes.Int2Float,                        # Interpretation of int value as float
+    "Ceil": ConvNodes.CeilNode,                                 # Rounds Value to next int
+    "Floor": ConvNodes.FloorNode,                               # Rounds Value to previous int
+    "Absolute value": ConvNodes.ABSNode,                        # Return absolute Value of input
+
+    "Get latent size": GetSizes.GetLatentSize,                  # Return size of latent
+    "Get image size": GetSizes.GetImageSize,                    # Return size of image
+
+    "Sum": SMath.SumNode,                                       # Summaries 2 values
+    "Subtract": SMath.SubtractNode,                             # Subtracts Value_B from Value_A
+    "Multiply": SMath.MultiplyNode,                             # Multiplies 2 values
+    "Divide": SMath.DivideNode,                                 # Divides Value_A on Value_B
+    "Power": SMath.PowNode,                                     # Returns Value_A powered by Value_B
+    "Square root": SMath.SquareRootNode,                        # Returns square root of Value
+
+    "Sinus": TMath.SinNode,                                       # Returns sinus of Value
+    "Cosines": TMath.CosNode,                                       # Returns cosines of Value
+    "Tangent": TMath.tgNode,                                         # Returns tangents of Value
+
+    "Latent Scale by ratio": LatentNodes.LatentScale_Ratio,     # Scales latent proportionally on value
+    "Latent Scale to side": LatentNodes.LatentScale_Side,       # Proportionally scales latent to fit in side size
+    "Latent Composite": LatentNodes.LatentComposite,            # Compose latents with tuples
+
+    "Image scale by ratio": ImageNodes.ImageScale_Ratio,        # Scales image proportionally on value
+    "Image scale to side": ImageNodes.ImageScale_Side,          # Proportionally scales image to fit in side size
+
+    "Conditioning set area": CondNodes.ConditioningSetArea,     # Compose condition on field using tuples
 }

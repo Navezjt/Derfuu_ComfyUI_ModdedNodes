@@ -1,11 +1,11 @@
-import custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.types as type
+import custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.fields as field
 
 import math
 
-from custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.tree import TREE_FUNCTIONS
+from custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.tree import TREE_TUPLES
 
 
-class Float2Tuple:
+class Tuple:
     def __init__(self) -> None:
         pass
 
@@ -13,22 +13,49 @@ class Float2Tuple:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "FLOAT_A": (type.FLOAT,),
-                "FLOAT_B": (type.FLOAT,),
-                "Ceil2Int": ([False, True],),
+                "Value_A": field.FLOAT,
+                "Value_B": field.FLOAT,
+                "round": (["No", "Yes", "Ceil", "Floor"],),
             }
         }
 
-    RETURN_TYPES = (type.TUPLE,)
-    CATEGORY = TREE_FUNCTIONS
+    RETURN_TYPES = ("TUPLE",)
+    CATEGORY = TREE_TUPLES
 
     FUNCTION = 'get_tuple'
 
-    def get_tuple(self, FLOAT_A=0, FLOAT_B=0, Ceil2Int=False):
-        if Ceil2Int == True:
-            FLOAT_A = math.ceil(FLOAT_A)
-            FLOAT_B = math.ceil(FLOAT_B)
-        return ((FLOAT_A, FLOAT_B),)
+    def get_tuple(self, Value_A=0, Value_B=0, round="No"):
+        match round:
+            case "No":
+                return ((Value_A, Value_B),)
+            case "Yes":
+                return ((int(Value_A), int(Value_B)),)
+            case "Ceil":
+                return ((math.ceil(Value_A), math.ceil(Value_B)),)
+            case "Floor":
+                return ((math.floor(Value_A), math.floor(Value_B)),)
+
+
+class Int2Tuple:
+    def __init__(self) -> None:
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "Value_A": field.INT,
+                "Value_B": field.INT,
+            }
+        }
+
+    RETURN_TYPES = ("TUPLE",)
+    CATEGORY = TREE_TUPLES
+
+    FUNCTION = 'get_tuple'
+
+    def get_tuple(self, Value_A=0, Value_B=0):
+        return ((Value_A, Value_B),)
 
 
 class Tuple2Float:
@@ -39,17 +66,17 @@ class Tuple2Float:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "TUPLE": (type.TUPLE,),
+                "Tuple": ("TUPLE",),
             }
         }
 
-    RETURN_TYPES = (type.FLOAT, type.FLOAT,)
-    CATEGORY = TREE_FUNCTIONS
+    RETURN_TYPES = ("FLOAT", "FLOAT",)
+    CATEGORY = TREE_TUPLES
 
     FUNCTION = 'get_tuple'
 
-    def get_tuple(self, TUPLE):
-        return (TUPLE[0], TUPLE[1],)
+    def get_tuple(self, Tuple):
+        return (Tuple[0], Tuple[1],)
 
 class Tuple2Int:
     def __init__(self) -> None:
@@ -59,17 +86,17 @@ class Tuple2Int:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "TUPLE": (type.TUPLE,),
+                "Tuple": ("TUPLE",),
             }
         }
 
-    RETURN_TYPES = (type.NodeINT, type.NodeINT,)
-    CATEGORY = TREE_FUNCTIONS
+    RETURN_TYPES = ("INT", "INT",)
+    CATEGORY = TREE_TUPLES
 
     FUNCTION = 'get_tuple'
 
-    def get_tuple(self, TUPLE):
-        return (int(TUPLE[0]), int(TUPLE[1]),)
+    def get_tuple(self, Tuple):
+        return (int(Tuple[0]), int(Tuple[1]),)
 
 
 class FlipTuple:
@@ -80,54 +107,55 @@ class FlipTuple:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "TUPLE": (type.TUPLE,)
+                "Tuple": ("TUPLE",)
             }
         }
 
-    RETURN_TYPES = (type.TUPLE,)
+    RETURN_TYPES = ("TUPLE",)
     FUNCTION = "flip"
-    CATEGORY = TREE_FUNCTIONS
+    CATEGORY = TREE_TUPLES
 
-    def flip(self, TUPLE):
-        return ((TUPLE[1], TUPLE[0]),)
-
-
-class MergeTuples:
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "TUPLE_A": (type.TUPLE,),
-                "TUPLE_B": (type.TUPLE,),
-            }
-        }
-
-    RETURN_TYPES = (type.TUPLE,)
-    FUNCTION = "merge"
-    CATEGORY = TREE_FUNCTIONS
-
-    def merge(self, TUPLE_A, TUPLE_B):
-        return ((TUPLE_A, TUPLE_B),)
+    def flip(self, Tuple):
+        return ((Tuple[1], Tuple[0]),)
 
 
-class Tuple2Tuple:
-    def __init__(self):
-        pass
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "TUPLE": (type.TUPLE,),
-            }
-        }
+# class MergeTuples:
+#     def __init__(self):
+#         pass
+#
+#     @classmethod
+#     def INPUT_TYPES(cls):
+#         return {
+#             "required": {
+#                 "TUPLE_A": ("TUPLE",),
+#                 "TUPLE_B": ("TUPLE",),
+#             }
+#         }
+#
+#     RETURN_TYPES = ("TUPLE",)
+#     FUNCTION = "merge"
+#     CATEGORY = TREE_TUPLES
+#
+#     def merge(self, TUPLE_A, TUPLE_B):
+#         return ((TUPLE_A, TUPLE_B),)
 
-    RETURN_TYPES = (type.TUPLE, type.TUPLE,)
-    FUNCTION = "spl"
-    CATEGORY = TREE_FUNCTIONS
 
-    def spl(self, TUPLE):
-        return (TUPLE[0], TUPLE[1],)
+# class Tuple2Tuple:
+#     def __init__(self):
+#         pass
+#
+#     @classmethod
+#     def INPUT_TYPES(cls):
+#         return {
+#             "required": {
+#                 "TUPLE": ("TUPLE",),
+#             }
+#         }
+#
+#     RETURN_TYPES = ("TUPLE", "TUPLE",)
+#     FUNCTION = "spl"
+#     CATEGORY = TREE_TUPLES
+#
+#     def spl(self, TUPLE):
+#         return (TUPLE[0], TUPLE[1],)

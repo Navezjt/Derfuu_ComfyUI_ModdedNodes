@@ -1,7 +1,6 @@
-import custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.types as type
-
 import math
 
+import custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.fields as field
 from custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.tree import TREE_CONVERTERS
 
 
@@ -13,16 +12,16 @@ class Int2Float:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "NodeINT": (type.NodeINT,),
+                "Value": field.INT,
             }
         }
 
-    RETURN_TYPES = (type.FLOAT,)
+    RETURN_TYPES = ("FLOAT",)
     FUNCTION = "get_value"
     CATEGORY = TREE_CONVERTERS
 
-    def get_value(self, INT):
-        return (float(INT),)
+    def get_value(self, Value):
+        return (float(Value),)
 
 
 class CeilNode:
@@ -33,16 +32,16 @@ class CeilNode:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "FLOAT": (type.FLOAT,),
+                "Value": field.FLOAT,
             }
         }
 
-    RETURN_TYPES = (type.NodeINT,)
+    RETURN_TYPES = ("INT",)
     FUNCTION = "get_value"
     CATEGORY = TREE_CONVERTERS
 
-    def get_value(self, FLOAT):
-        total = int(math.ceil(FLOAT))
+    def get_value(self, Value):
+        total = int(math.ceil(Value))
         return (total,)
 
 
@@ -54,16 +53,16 @@ class FloorNode:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "FLOAT": (type.FLOAT,),
+                "Value": field.FLOAT,
             }
         }
 
-    RETURN_TYPES = (type.NodeINT,)
+    RETURN_TYPES = ("INT",)
     FUNCTION = "get_value"
     CATEGORY = TREE_CONVERTERS
 
-    def get_value(self, FLOAT):
-        total = int(math.floor(FLOAT))
+    def get_value(self, Value):
+        total = int(math.floor(Value))
         return (total,)
 
 
@@ -75,56 +74,16 @@ class ABSNode:
     def INPUT_TYPES(self):
         return {
             "required": {
-                "FLOAT": (type.FLOAT,),
-                "IsNegative": ([False, True],)
+                "Value": field.FLOAT,
+                "Get_negative": ([False, True],)
             }
         }
 
-    RETURN_TYPES = (type.FLOAT,)
+    RETURN_TYPES = ("FLOAT",)
     FUNCTION = "abs_val"
     CATEGORY = TREE_CONVERTERS
 
-    def abs_val(self, FLOAT, IsNegative):
-        if IsNegative:
-            return (-abs(FLOAT),)
-        return (abs(FLOAT),)
-
-
-class Modd2Orig:
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(self):
-        return {
-            "required": {
-                "mod_INT": (type.NodeINT,),
-            }
-        }
-
-    RETURN_TYPES = (type.OrigINT,)
-    FUNCTION = "conv"
-    CATEGORY = TREE_CONVERTERS
-
-    def conv(self, mod_INT):
-        return (mod_INT,)
-
-
-class Orig2Modd:
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(self):
-        return {
-            "required": {
-                "orig_INT": (type.OrigINT,),
-            }
-        }
-
-    RETURN_TYPES = (type.NodeINT,)
-    FUNCTION = "conv"
-    CATEGORY = TREE_CONVERTERS
-
-    def conv(self, orig_INT):
-        return (orig_INT,)
+    def abs_val(self, Value, Get_negative):
+        if Get_negative:
+            return (-abs(Value),)
+        return (abs(Value),)

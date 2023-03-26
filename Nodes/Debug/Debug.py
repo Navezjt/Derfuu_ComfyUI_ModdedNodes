@@ -1,8 +1,4 @@
-import custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.types as type
 import custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.fields as field
-
-import custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.DEFAULTS_VALUES as DEFVAL
-
 from custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.tree import TREE_DEBUG
 
 class DebugNodeFloat:
@@ -13,8 +9,8 @@ class DebugNodeFloat:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "TITLE": ("STRING", DEFVAL.STR_DEFAULTS),
-                "FLOAT": ("FLOAT", DEFVAL.FLOAT_DEFAULTS)
+                "Prefix": field.STRING,
+                "Value": field.FLOAT,
             }
         }
 
@@ -23,8 +19,8 @@ class DebugNodeFloat:
     FUNCTION = "print_values"
     OUTPUT_NODE = True
 
-    def print_values(self, FLOAT, TITLE):
-        print(f"{TITLE}: {FLOAT}", sep="\n")
+    def print_values(self, Value, Prefix):
+        print(f"{Prefix}: {Value}", sep="\n")
         return (None,)
 
 
@@ -36,8 +32,8 @@ class DebugNodeInt:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "TITLE": ("STRING", DEFVAL.STR_DEFAULTS),
-                "INT": ("INT", DEFVAL.INT_DEFAULTS)
+                "Prefix": field.STRING,
+                "Value": field.INT,
             }
         }
 
@@ -46,8 +42,8 @@ class DebugNodeInt:
     FUNCTION = "print_values"
     OUTPUT_NODE = True
 
-    def print_values(self, INT, TITLE):
-        print(f"{TITLE}: {INT}", sep="\n")
+    def print_values(self, Value, Prefix):
+        print(f"{Prefix}: {Value}", sep="\n")
         return (None,)
 
 
@@ -59,8 +55,8 @@ class DebugNodeTuple:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "TITLE": ("STRING", DEFVAL.STR_DEFAULTS),
-                "TUPLE": ("TUPLE",),
+                "Prefix": field.STRING,
+                "Values": ("TUPLE",),
             }
         }
 
@@ -69,8 +65,8 @@ class DebugNodeTuple:
     FUNCTION = "print_values"
     OUTPUT_NODE = True
 
-    def print_values(self, TUPLE, TITLE):
-        print(f"{TITLE}: {TUPLE}", sep="\n")
+    def print_values(self, Values, Prefix):
+        print(f"{Prefix}: {Values}", sep="\n")
         return (None,)
 
 class DebugNodeString:
@@ -81,8 +77,8 @@ class DebugNodeString:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "TITLE": field.STRING,
-                "STRING": (type.STRING,),
+                "Prefix": field.STRING,
+                "Text": field.STRING,
             }
         }
 
@@ -91,6 +87,6 @@ class DebugNodeString:
     FUNCTION = "print_values"
     OUTPUT_NODE = True
 
-    def print_values(self, STRING, TITLE):
-        print(f"{TITLE}: {STRING}", sep="\n")
+    def print_values(self, Text, Prefix):
+        print(f"{Prefix}: {Text}", sep="\n")
         return (None,)

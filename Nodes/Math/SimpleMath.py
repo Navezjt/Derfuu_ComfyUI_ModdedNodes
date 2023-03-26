@@ -1,6 +1,6 @@
 import math
 
-import custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.types as type
+import custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.fields as field
 from custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.tree import TREE_MATH
 
 
@@ -12,17 +12,17 @@ class MultiplyNode:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "FLOAT_A": (type.FLOAT,),
-                "FLOAT_B": (type.FLOAT,),
+                "Value_A": field.FLOAT,
+                "Value_B": field.FLOAT,
             },
         }
 
-    RETURN_TYPES = (type.FLOAT,)
+    RETURN_TYPES = ("FLOAT",)
     FUNCTION = "multiply"
     CATEGORY = TREE_MATH
 
-    def multiply(self, FLOAT_A, FLOAT_B):
-        total = float(FLOAT_A * FLOAT_B)
+    def multiply(self, Value_A, Value_B):
+        total = float(Value_A * Value_B)
         return (total,)
 
 
@@ -34,17 +34,17 @@ class DivideNode:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "FLOAT_A": (type.FLOAT,),
-                "FLOAT_B": (type.FLOAT,),
+                "Numerator": field.FLOAT,
+                "Denominator": field.FLOAT,
             },
         }
 
-    RETURN_TYPES = (type.FLOAT,)
+    RETURN_TYPES = ("FLOAT",)
     FUNCTION = "divide"
     CATEGORY = TREE_MATH
 
-    def divide(self, FLOAT_A, FLOAT_B):
-        total = float(FLOAT_A / FLOAT_B)
+    def divide(self, Numerator, Denominator):
+        total = float(Numerator / Denominator)
         return (total,)
 
 
@@ -56,17 +56,17 @@ class SumNode:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "FLOAT_A": (type.FLOAT,),
-                "FLOAT_B": (type.FLOAT,),
+                "Value_A": field.FLOAT,
+                "Value_B": field.FLOAT,
             },
         }
 
-    RETURN_TYPES = (type.FLOAT,)
+    RETURN_TYPES = ("FLOAT",)
     FUNCTION = "sum"
     CATEGORY = TREE_MATH
 
-    def sum(self, FLOAT_A, FLOAT_B):
-        total = float(FLOAT_A + FLOAT_B)
+    def sum(self, Value_A, Value_B):
+        total = float(Value_A + Value_B)
         return (total,)
 
 
@@ -78,17 +78,17 @@ class SubtractNode:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "FLOAT_A": (type.FLOAT,),
-                "FLOAT_B": (type.FLOAT,),
+                "Value_A": field.FLOAT,
+                "Value_B": field.FLOAT,
             },
         }
 
-    RETURN_TYPES = (type.FLOAT,)
+    RETURN_TYPES = ("FLOAT",)
     FUNCTION = "sub"
     CATEGORY = TREE_MATH
 
-    def sub(self, FLOAT_A, FLOAT_B):
-        total = float(FLOAT_A - FLOAT_B)
+    def sub(self, Value_A, Value_B):
+        total = float(Value_A - Value_B)
         return (total,)
 
 
@@ -100,17 +100,17 @@ class PowNode:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "FLOAT_A": (type.FLOAT,),
-                "FLOAT_B": (type.FLOAT,),
+                "Value": field.FLOAT,
+                "Exponent": field.FLOAT,
             },
         }
 
-    RETURN_TYPES = (type.FLOAT,)
-    FUNCTION = "sub"
+    RETURN_TYPES = ("FLOAT",)
+    FUNCTION = "pow"
     CATEGORY = TREE_MATH
 
-    def sub(self, FLOAT_A, FLOAT_B=2):
-        total = math.pow(FLOAT_A, FLOAT_B)
+    def pow(self, Value, Exponent):
+        total = math.pow(Value, Exponent)
         return (total,)
 
 
@@ -122,14 +122,14 @@ class SquareRootNode:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "FLOAT": (type.FLOAT,),
+                "Value": field.FLOAT,
             },
         }
 
-    RETURN_TYPES = (type.FLOAT,)
-    FUNCTION = "sub"
+    RETURN_TYPES = ("FLOAT", "FLOAT",)
+    FUNCTION = "sqrt"
     CATEGORY = TREE_MATH
 
-    def sub(self, FLOAT):
-        total = math.sqrt(FLOAT)
-        return (total,)
+    def sqrt(self, Value):
+        total = math.sqrt(Value)
+        return (total, -total,)

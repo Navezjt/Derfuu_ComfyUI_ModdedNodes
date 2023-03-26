@@ -5,11 +5,7 @@ FLOAT = ("FLOAT", {"default": 1,
                    "max": sys.float_info.max,
                    "step": 0.01})
 # BOOL = ("BOOL", {"default": False})
-NodeINT = ("INTEGER", {"default": 1,
-               "min": -sys.maxsize,
-               "max": sys.maxsize,
-               "step": 1})
-OrigINT = ("INT", {"default": 1,
+INT = ("INT", {"default": 1,
                "min": -sys.maxsize,
                "max": sys.maxsize,
                "step": 1})
