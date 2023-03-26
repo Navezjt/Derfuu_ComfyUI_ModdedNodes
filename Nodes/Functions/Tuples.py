@@ -63,7 +63,7 @@ class Tuple2Int:
             }
         }
 
-    RETURN_TYPES = (type.INT, type.INT,)
+    RETURN_TYPES = (type.NodeINT, type.NodeINT,)
     CATEGORY = TREE_FUNCTIONS
 
     FUNCTION = 'get_tuple'

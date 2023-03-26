@@ -52,7 +52,7 @@ class ImageScale_Side:
             "required": {
                 "IMAGE": (type.IMAGE,),
                 "TUPLE": (type.TUPLE,),
-                "side_length": field.INT,
+                "side_length": field.OrigINT,
                 "side": (["Width", "Height"],),
                 "upscale_method": (cls.upscale_methods,),
                 "crop": (cls.crop_methods,)}}

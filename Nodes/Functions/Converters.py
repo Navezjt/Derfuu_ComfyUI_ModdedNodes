@@ -13,7 +13,7 @@ class Int2Float:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "INT": (type.INT,),
+                "NodeINT": (type.NodeINT,),
             }
         }
 
@@ -37,7 +37,7 @@ class CeilNode:
             }
         }
 
-    RETURN_TYPES = (type.INT,)
+    RETURN_TYPES = (type.NodeINT,)
     FUNCTION = "get_value"
     CATEGORY = TREE_CONVERTERS
 
@@ -58,7 +58,7 @@ class FloorNode:
             }
         }
 
-    RETURN_TYPES = (type.INT,)
+    RETURN_TYPES = (type.NodeINT,)
     FUNCTION = "get_value"
     CATEGORY = TREE_CONVERTERS
 
@@ -88,3 +88,43 @@ class ABSNode:
         if IsNegative:
             return (-abs(FLOAT),)
         return (abs(FLOAT),)
+
+
+class Modd2Orig:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(self):
+        return {
+            "required": {
+                "mod_INT": (type.NodeINT,),
+            }
+        }
+
+    RETURN_TYPES = (type.OrigINT,)
+    FUNCTION = "conv"
+    CATEGORY = TREE_CONVERTERS
+
+    def conv(self, mod_INT):
+        return (mod_INT,)
+
+
+class Orig2Modd:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(self):
+        return {
+            "required": {
+                "orig_INT": (type.OrigINT,),
+            }
+        }
+
+    RETURN_TYPES = (type.NodeINT,)
+    FUNCTION = "conv"
+    CATEGORY = TREE_CONVERTERS
+
+    def conv(self, orig_INT):
+        return (orig_INT,)

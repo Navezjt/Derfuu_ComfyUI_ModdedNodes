@@ -17,7 +17,7 @@ class EmptyLatentImage:
         return {
             "required": {
                 "TUPLE": (type.TUPLE,),
-                "batch_size": field.INT,
+                "batch_size": field.NodeINT,
             }
         }
 
@@ -83,7 +83,7 @@ class LatentScale_Side:
             "required": {
                 "LATENT": (type.LATENT,),
                 "TUPLE": (type.TUPLE,),
-                "side_length": field.INT,
+                "side_length": field.OrigINT,
                 "side": (["Width", "Height"],),
                 "scale_method": (cls.upscale_methods,),
                 "crop": (cls.crop_methods,)}}
@@ -129,7 +129,7 @@ class LatentComposite:
                 "SAMPLES_FROM": (type.LATENT,),
                 "SAMPLES_TO": (type.LATENT,),
                 "TUPLE_POSITION": (type.TUPLE,),
-                "FEATHER": field.INT,
+                "FEATHER": field.NodeINT,
             }
         }
 

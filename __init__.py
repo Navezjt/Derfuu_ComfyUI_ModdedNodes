@@ -19,47 +19,49 @@ NODE_CLASS_MAPPINGS = {
     "IntegerNode_DF": TypeNodes.IntegerNode,
     "StringNode_DF": TypeNodes.StringNode,
     "TupleNode_DF": TypeNodes.TupleNode,
-    "MultilineStringNode_DF": TypeNodes.MultilineStringNode,
+    # "MultilineStringNode_DF": TypeNodes.MultilineStringNode,
 
     "FloatDebugPrint_DF": DebugNodes.DebugNodeFloat,
     "IntDebugPrint_DF": DebugNodes.DebugNodeInt,
     "TupleDebugPrint_DF": DebugNodes.DebugNodeTuple,
     "StringDebugPrint_DF": DebugNodes.DebugNodeString,
 
-    "RandomFloat_DF": RandNodes.RandomValue,
-
-    "Float2Tuple_DF": TupleNodes.Float2Tuple,
-    "FlipTuple_DF": TupleNodes.FlipTuple,
-    "Tuple2Float_DF": TupleNodes.Tuple2Float,
-    "Tuple2Int_DF": TupleNodes.Tuple2Int,
-
-    "Int2Float_DF": ConvNodes.Int2Float,
-    "CeilNode_DF": ConvNodes.CeilNode,
-    "FloorNode_DF": ConvNodes.FloorNode,
-    "ABSNode_DF": ConvNodes.ABSNode,
-
-    "GetLatentSize_DF": GetSizes.GetLatentSize,
-    "GetImageSize_DF": GetSizes.GetImageSize,
-
+    # "RandomFloat_DF": RandNodes.RandomValue,
+    #
+    # "Float2Tuple_DF": TupleNodes.Float2Tuple,
+    # "FlipTuple_DF": TupleNodes.FlipTuple,
+    # "Tuple2Float_DF": TupleNodes.Tuple2Float,
+    # "Tuple2Int_DF": TupleNodes.Tuple2Int,
+    #
+    # "Modd2Orig": ConvNodes.Modd2Orig,
+    # "Orig2Modd": ConvNodes.Orig2Modd,
+    # "Int2Float_DF": ConvNodes.Int2Float,
+    # "CeilNode_DF": ConvNodes.CeilNode,
+    # "FloorNode_DF": ConvNodes.FloorNode,
+    # "ABSNode_DF": ConvNodes.ABSNode,
+    #
+    # "GetLatentSize_DF": GetSizes.GetLatentSize,
+    # "GetImageSize_DF": GetSizes.GetImageSize,
+    #
     "SumNode_DF": SMath.SumNode,
     "SubtractNode_DF": SMath.SubtractNode,
     "MultiplyNode_DF": SMath.MultiplyNode,
     "DivideNode_DF": SMath.DivideNode,
     "PowNode_DF": SMath.PowNode,
     "SqrtNode_DF": SMath.SquareRootNode,
-
-    "SinNode_DF": TMath.SinNode,
-    "CosNode_DF": TMath.CosNode,
-    "TanNode_DF": TMath.tgNode,
-
-    # "EmptyLatentImage_DF": LatentNodes.EmptyLatentImage,
-    "LatentScale_Ratio_DF": LatentNodes.LatentScale_Ratio,
-    "LatentScale_Side_DF": LatentNodes.LatentScale_Side,
-    # "LatentComposite_DF": LatentNodes.LatentComposite,
-
-    "ImageScale_Ratio_DF": ImageNodes.ImageScale_Ratio,
-    "ImageScale_Side_DF": ImageNodes.ImageScale_Side,
-
-    "ConditioningSetArea_DF": CondNodes.ConditioningSetArea_MOD,
-    # "ConditioningSetAreaEXT_DF": CondNodes.ConditioningSetAreaExt_MOD,
+    #
+    # "SinNode_DF": TMath.SinNode,
+    # "CosNode_DF": TMath.CosNode,
+    # "TanNode_DF": TMath.tgNode,
+    #
+    # # "EmptyLatentImage_DF": LatentNodes.EmptyLatentImage,
+    # "LatentScale_Ratio_DF": LatentNodes.LatentScale_Ratio,
+    # "LatentScale_Side_DF": LatentNodes.LatentScale_Side,
+    # # "LatentComposite_DF": LatentNodes.LatentComposite,
+    #
+    # "ImageScale_Ratio_DF": ImageNodes.ImageScale_Ratio,
+    # "ImageScale_Side_DF": ImageNodes.ImageScale_Side,
+    #
+    # "ConditioningSetArea_DF": CondNodes.ConditioningSetArea_MOD,
+    # # "ConditioningSetAreaEXT_DF": CondNodes.ConditioningSetAreaExt_MOD,
 }
