@@ -49,9 +49,9 @@ NODE_CLASS_MAPPINGS = {
     "Power": SMath.PowNode,                                     # Returns Value_A powered by Value_B
     "Square root": SMath.SquareRootNode,                        # Returns square root of Value
 
-    "Sinus": TMath.SinNode,                                       # Returns sinus of Value
-    "Cosines": TMath.CosNode,                                       # Returns cosines of Value
-    "Tangent": TMath.tgNode,                                         # Returns tangents of Value
+    "Sinus": TMath.SinNode,                                     # Returns sinus of Value
+    "Cosines": TMath.CosNode,                                   # Returns cosines of Value
+    "Tangent": TMath.tgNode,                                    # Returns tangents of Value
 
     "Latent Scale by ratio": LatentNodes.LatentScale_Ratio,     # Scales latent proportionally on value
     "Latent Scale to side": LatentNodes.LatentScale_Side,       # Proportionally scales latent to fit in side size
@@ -61,4 +61,5 @@ NODE_CLASS_MAPPINGS = {
     "Image scale to side": ImageNodes.ImageScale_Side,          # Proportionally scales image to fit in side size
 
     "Conditioning set area": CondNodes.ConditioningSetArea,     # Compose condition on field using tuples
+    "Conditioning area scale by ratio": CondNodes.ConditioningAreaScale_Ratio,
 }
