@@ -10,9 +10,12 @@ import custom_nodes.Derfuu_ComfyUI_ModdedNodes.Nodes.Functions.Tuples as TupleNo
 import custom_nodes.Derfuu_ComfyUI_ModdedNodes.Nodes.Math.SimpleMath as SMath
 import custom_nodes.Derfuu_ComfyUI_ModdedNodes.Nodes.Math.Trigonometry as TMath
 
-import custom_nodes.Derfuu_ComfyUI_ModdedNodes.Nodes.Modded.Images as ImageNodes
-import custom_nodes.Derfuu_ComfyUI_ModdedNodes.Nodes.Modded.Latents as LatentNodes
-import custom_nodes.Derfuu_ComfyUI_ModdedNodes.Nodes.Modded.Condotionig as CondNodes
+import custom_nodes.Derfuu_ComfyUI_ModdedNodes.Nodes.Modded.StandartInputs.Images as St_ImageNodes
+import custom_nodes.Derfuu_ComfyUI_ModdedNodes.Nodes.Modded.StandartInputs.Latents as St_LatentNodes
+import custom_nodes.Derfuu_ComfyUI_ModdedNodes.Nodes.Modded.StandartInputs.Condotionig as St_CondNodes
+
+import custom_nodes.Derfuu_ComfyUI_ModdedNodes.Nodes.Modded.TuplesUsed.Latents as Tu_LatentNodes
+import custom_nodes.Derfuu_ComfyUI_ModdedNodes.Nodes.Modded.TuplesUsed.Conditioning as Tu_CondNodes
 
 NODE_CLASS_MAPPINGS = {
     "Float": TypeNodes.FloatNode,                               # Return float Value
@@ -53,13 +56,16 @@ NODE_CLASS_MAPPINGS = {
     "Cosines": TMath.CosNode,                                   # Returns cosines of Value
     "Tangent": TMath.tgNode,                                    # Returns tangents of Value
 
-    "Latent Scale by ratio": LatentNodes.LatentScale_Ratio,     # Scales latent proportionally on value
-    "Latent Scale to side": LatentNodes.LatentScale_Side,       # Proportionally scales latent to fit in side size
-    "Latent Composite": LatentNodes.LatentComposite,            # Compose latents with tuples
 
-    "Image scale by ratio": ImageNodes.ImageScale_Ratio,        # Scales image proportionally on value
-    "Image scale to side": ImageNodes.ImageScale_Side,          # Proportionally scales image to fit in side size
+    # STANDART MODDED
+    "Latent Scale by ratio": St_LatentNodes.LatentScale_Ratio,     # Scales latent proportionally on value
+    "Latent Scale to side": St_LatentNodes.LatentScale_Side,       # Proportionally scales latent to fit in side size
+    "Image scale by ratio": St_ImageNodes.ImageScale_Ratio,        # Scales image proportionally on value
+    "Image scale to side": St_ImageNodes.ImageScale_Side,          # Proportionally scales image to fit in side size
+    "Conditioning area scale by ratio": St_CondNodes.ConditioningAreaScale_Ratio,
 
-    "Conditioning set area": CondNodes.ConditioningSetArea,     # Compose condition on field using tuples
-    "Conditioning area scale by ratio": CondNodes.ConditioningAreaScale_Ratio,
+
+    # TUPLE MODDED
+    "Conditioning set area": Tu_CondNodes.ConditioningSetArea,     # Compose condition on field using tuples
+    "LatentComposite with tuples": Tu_LatentNodes.LatentComposite,
 }

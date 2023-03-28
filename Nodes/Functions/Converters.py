@@ -75,7 +75,7 @@ class ABSNode:
         return {
             "required": {
                 "Value": field.FLOAT,
-                "Get_negative": ([False, True],)
+                "negative_out": ([False, True],)
             }
         }
 

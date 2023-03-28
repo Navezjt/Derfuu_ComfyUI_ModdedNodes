@@ -1,6 +1,8 @@
 import custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.fields as field
 from custom_nodes.Derfuu_ComfyUI_ModdedNodes.components.tree import TREE_VARIABLE
 
+import sys
+
 class FloatNode:
     def __init__(self) -> None:
         pass
@@ -29,7 +31,13 @@ class IntegerNode:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "Value": field.INT,
+                "Value": ("FLOAT", {
+                        "default": 1,
+                        "min": -sys.float_info.max,
+                        "max": sys.float_info.max,
+                        "step": 1
+                    },
+                )
             },
         }
 
@@ -38,7 +46,7 @@ class IntegerNode:
     FUNCTION = "get_value"
 
     def get_value(self, Value):
-        return (Value,)
+        return (int(Value),)
 
 
 class StringNode:

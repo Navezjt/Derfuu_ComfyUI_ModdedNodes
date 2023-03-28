@@ -15,7 +15,7 @@ class GetLatentSize:
             }
         }
 
-    RETURN_TYPES = ("TUPLE", "INT", "INT",)
+    RETURN_TYPES = ("INT", "INT", "TUPLE",)
     CATEGORY = TREE_FUNCTIONS
 
     FUNCTION = 'get_size'
@@ -37,7 +37,7 @@ class GetImageSize:
             }
         }
 
-    RETURN_TYPES = ("TUPLE", "INT", "INT",)
+    RETURN_TYPES = ("INT", "INT", "TUPLE",)
     CATEGORY = TREE_FUNCTIONS
 
     FUNCTION = 'get_size'
